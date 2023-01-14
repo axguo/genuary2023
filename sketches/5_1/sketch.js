@@ -29,7 +29,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
+  createCanvas(600, 600, WEBGL);
   noStroke();
   createSliders();
 }
