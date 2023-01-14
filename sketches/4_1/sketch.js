@@ -110,6 +110,6 @@ function displayValues() {
     bw_.html("Color: " + bw.value());
 }
 
-function mouseClicked() {
-    saveCanvas();
-}
+// function mouseClicked() {
+//     saveCanvas();
+// }
