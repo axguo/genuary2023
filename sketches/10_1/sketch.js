@@ -7,53 +7,52 @@ let colors = ["#f72585", "#7209b7", "#4cc9f0", "#80ed99", "#ffea00", "#ff7b00", 
 function setup() {
   createCanvas(400, 400, WEBGL);
   
-  for(let i=-4; i<5; i++) {
-    let row = [];
-    let ball_row = [];
-    for(let j=-4; j<5; j++) { 
-      let env = new p5.Env();
-      env.setADSR(0.05, 0.1, 0.5, 1);
-      env.setRange(1.2, 0);
+//   for(let i=-4; i<5; i++) {
+//     let row = [];
+//     let ball_row = [];
+//     for(let j=-4; j<5; j++) { 
+//       let env = new p5.Env();
+//       env.setADSR(0.05, 0.1, 0.5, 1);
+//       env.setRange(1.2, 0);
       
-      let w = new p5.Oscillator();
-      w.start();
+//       let w = new p5.Oscillator();
+//       w.start();
       
-      let ind = ((i+4) * 9 + (j + 4))%6;
-      let p = pent[ind];
-      let c = colors[ind];
-      console.log(ind);
+//       let ind = ((i+4) * 9 + (j + 4))%6;
+//       let p = pent[ind];
+//       let c = colors[ind];
       
-      f = 440 * Math.pow(2, (p / 12) - 1.5);
+//       f = 440 * Math.pow(2, (p / 12) - 1.5);
       
-      w.freq(f);
-      w.setType('sine');
-      w.amp(env);
-      let z = random()*200 + 50;
-      let sound = {
-        x: i*20,
-        y: j*20,
-        on: false,
-        wave: w,
-        height: z,
-        z: z,
-        length: 30,
-        curr: 0,
-        color: c,
-        range: int(random()*150) + 50,
-        env: env
-      }
+//       w.freq(f);
+//       w.setType('sine');
+//       w.amp(env);
+//       let z = random()*200 + 50;
+//       let sound = {
+//         x: i*20,
+//         y: j*20,
+//         on: false,
+//         wave: w,
+//         height: z,
+//         z: z,
+//         length: 30,
+//         curr: 0,
+//         color: c,
+//         range: int(random()*150) + 50,
+//         env: env
+//       }
       
-      let b = {
-        h: -random()*1000-300
-      }
+//       let b = {
+//         h: -random()*1000-300
+//       }
       
-      row.push(sound);
-      ball_row.push(b);
-    }
-    grid.push(row);
-    balls.push(ball_row);
-  }
-var button = createButton("reset").parent(sliders);
+//       row.push(sound);
+//       ball_row.push(b);
+//     }
+//     grid.push(row);
+//     balls.push(ball_row);
+//   }
+var button = createButton("generate").parent(sliders);
     button.mousePressed(resetSketch);
 }
 
@@ -74,7 +73,6 @@ function resetSketch() {
       let ind = ((i+4) * 9 + (j + 4))%6;
       let p = pent[ind];
       let c = colors[ind];
-      console.log(ind);
       
       f = 440 * Math.pow(2, (p / 12) - 1.5);
       
@@ -116,7 +114,8 @@ function draw() {
   ambientLight(200, 200, 200);
   pointLight(255, 255, 255, 200,-400, 900);
   
-  for(let i=0; i<9; i++) {
+  if(grid.length != 0) {
+    for(let i=0; i<9; i++) {
     for(let j=0; j<9; j++) {
       let sound = grid[i][j];
       let ball = balls[i][j];
@@ -161,5 +160,7 @@ function draw() {
       }
     }
   }
+  }
+  
   
 }
