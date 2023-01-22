@@ -127,7 +127,7 @@ function draw() {
       } else {
         fill(255);
       }
-      ambientMaterial(200);
+      ambientMaterial(150);
       
       sound.height = sound.z + abs(map(frameCount%(sound.range*3), 0, sound.range*3, -sound.range/2, sound.range/2));
       box(20,sound.height,20);
