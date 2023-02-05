@@ -17,15 +17,7 @@ function setup() {
     textSize(40);
     textAlign(CENTER, TOP);
     noCursor();
-    var button = createButton("generate").parent(sliders);
-    button.mousePressed(resetSketch);
 }
-
-function resetSketch() {
-    windows = 6;
-    rects = [];
-}
-
 
 function draw() {
     background(255);
